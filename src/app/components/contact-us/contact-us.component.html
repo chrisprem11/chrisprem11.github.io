@@ -1,0 +1,177 @@
+<div class="container-fluid page-content" *ngIf="currentPageContent">
+  <div class="row">
+    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12"></div>
+    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12"></div>
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 well">
+      <a href="#" class="text-primary pull-right top-right-close label-header" [routerLink]="['/home']">Close
+        <i class="fa fa-chevron-circle-up icon-size" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+  <toaster-container></toaster-container>
+  <div class="row">
+    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12"></div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <h2>{{currentPageContent.contactUsLabel}}</h2>
+      <br>
+      <p class="text">{{currentPageContent.contactUsContent}}</p>
+      <br>
+      <form (ngSubmit)="onSubmit()" [formGroup]="contactUsForm">
+        <div class="form-row">
+          <br>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <label class="label-header">{{currentPageContent.formNameLabel}}</label>
+            <input type="text" minlength="4" maxlength="31" class="form-control" placeholder="Your full name" formControlName="name">
+            <div *ngIf="contactUsForm.controls.name.errors && (contactUsForm.controls.name.dirty || contactUsForm.controls.name.touched)"
+              class="alert alert-warning error-text">
+              <div [hidden]="!contactUsForm.controls.name.errors.required">
+                Name is required
+              </div>
+              <div [hidden]="!contactUsForm.controls.name.errors.pattern">
+                Only characters and space is allowed !
+              </div>
+              <div [hidden]="!contactUsForm.controls.name.errors.minlength">
+                Name must be at least 4 characters long.
+              </div>
+              <div [hidden]="!contactUsForm.controls.name.errors.maxlength">
+                Name cannot be more than 30 characters long.
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <label class="label-header">{{currentPageContent.formCompanyNameLabel}}</label>
+            <input type="text" minlength="3" maxlength="31" class="form-control" placeholder="Company name" formControlName="companyName">
+            <div *ngIf="contactUsForm.controls.companyName.errors && (contactUsForm.controls.companyName.dirty || contactUsForm.controls.companyName.touched)"
+              class="alert alert-warning error-text">
+              <div [hidden]="!contactUsForm.controls.companyName.errors.required">
+                Company Name is required
+              </div>
+              <div [hidden]="!contactUsForm.controls.companyName.errors.pattern">
+                Only characters and space is allowed !
+              </div>
+              <div [hidden]="!contactUsForm.controls.companyName.errors.minlength">
+                Company Name must be at least 4 characters long.
+              </div>
+              <div [hidden]="!contactUsForm.controls.companyName.errors.maxlength">
+                Company Name cannot be more than 30 characters long.
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="form-row">
+          <br>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <label class="label-header">{{currentPageContent.formEmailLabel}}</label>
+            <input type="email" required minlength="3" maxlength="31" class="form-control" placeholder="Your Email Id" formControlName="email">
+            <div *ngIf="contactUsForm.controls.email.errors && (contactUsForm.controls.email.dirty || contactUsForm.controls.email.touched)"
+              class="alert alert-warning error-text">
+              <div [hidden]="!contactUsForm.controls.email.errors.required">
+                Email is required
+              </div>
+              <div [hidden]="!contactUsForm.controls.email.errors.pattern">
+                Please enter a valid email
+              </div>
+              <div [hidden]="!contactUsForm.controls.email.errors.minlength">
+                Email must be at least 4 characters long.
+              </div>
+              <div [hidden]="!contactUsForm.controls.email.errors.maxlength">
+                Email cannot be more than 30 characters long.
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <label class="label-header">{{currentPageContent.formContactNumberLabel}}</label>
+            <input type="text" minlength="9" maxlength="11" class="form-control" placeholder="Your contact number" formControlName="contact">
+            <div *ngIf="contactUsForm.controls.contact.errors && (contactUsForm.controls.contact.dirty || contactUsForm.controls.contact.touched)"
+              class="alert alert-warning error-text">
+              <div [hidden]="!contactUsForm.controls.contact.errors.required">
+                Contact is required
+              </div>
+              <div [hidden]="!contactUsForm.controls.contact.errors.pattern">
+                Only Numbers are allowed.
+              </div>
+              <div [hidden]="!contactUsForm.controls.contact.errors.minlength">
+                Contact must be at least 10 digits.
+              </div>
+              <div [hidden]="!contactUsForm.controls.contact.errors.maxlength">
+                Contact cannot be more than 10 digits.
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="form-row">
+          <br>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <label class="label-header">{{currentPageContent.formLookingForLabel}}</label>
+            <br>
+            <div>
+              <div class="radio" *ngFor="let option of currentPageContent.formLookingForOptions">
+                <label>
+                  <input type="radio" value={{option.value}} formControlName="interestedIn">&nbsp;{{option.value}}</label>
+              </div>
+            </div>
+            <div *ngIf="contactUsForm.controls.interestedIn.errors && (contactUsForm.controls.interestedIn.dirty || contactUsForm.controls.interestedIn.touched)"
+              class="alert alert-warning error-text">
+              <div [hidden]="!contactUsForm.controls.interestedIn.errors.required">
+                Interested In is required.
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <label class="label-header">{{currentPageContent.formNotesLabel}} </label>
+            <div>
+              <textarea maxlength="151" class="form-control" rows="3" name="notes" formControlName="notes"></textarea>
+            </div>
+            <div *ngIf="contactUsForm.controls.notes.errors && (contactUsForm.controls.notes.dirty || contactUsForm.controls.notes.touched) "
+              class="alert alert-warning error-text ">
+              <div [hidden]="!contactUsForm.controls.notes.errors.pattern ">
+                Only Character and Numbers are allowed.
+              </div>
+              <div [hidden]="!contactUsForm.controls.notes.errors.maxlength ">
+                Notes cannot be more than 150 Characters.
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <div class="form-row ">
+          <br>
+          <br>
+          <br>
+          <div class="text-center ">
+            <input type="Submit" [disabled]="!contactUsForm.valid " value="Submit " class="btn btn-sm btn-warning pull-left ">
+          </div>
+        </div>
+        <div class="form-row ">
+          <p class="text ">{{currentPageContent.policyAgreementlabel_1}}
+            <a href={{currentPageContent.termsAndServiceLink}} class="text-primary ">{{currentPageContent.termsAndServiceLabel}}</a> {{currentPageContent.policyAgreementlabel_2}}
+            <a href={{currentPageContent.privacyPolicyLink}} class="text-primary ">{{currentPageContent.privacyPolicyLabel}}</a>
+          </p>
+        </div>
+      </form>
+    </div>
+    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 "></div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 well ">
+      <div class="right-side-content ">
+        <h2>{{currentPageContent.callUsLabel}}</h2>
+        <br>
+        <p class="text ">{{currentPageContent.callUsContent}}</p>
+        <br>
+        <div class="row ">
+          <i class="{{currentPageContent.contactUsPhoneIcon}} icon-size text-primary " aria-hidden="true "></i>&nbsp;&nbsp;
+          <p class="text-primary ">{{currentPageContent.contactNumber}}</p>
+        </div>
+        <br>
+        <br>
+        <br>
+        <p class="text ">
+          {{currentPageContent.helpCenterContent}}
+          <a href={{currentPageContent.helpCenterLink}} class="text-primary "> {{currentPageContent.helpCenterLinkLabel}}</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

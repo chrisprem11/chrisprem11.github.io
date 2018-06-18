@@ -1,0 +1,277 @@
+<!-- <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="navbar">
+        <div class="container">
+            <a class="navbar-brand text-primary" href="#">URS Systems</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item customNavItem active">
+                        <a class="nav-link  text-light" (click)="openNav()">
+              Locations
+            </a>
+                    </li>
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link text-light" [routerLink]="['/plans']">Plans</a>
+                    </li>
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link text-light" [routerLink]="['/mission']">Mission</a>
+                    </li>
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link text-light" [routerLink]="['/enterprise']">Enterprise</a>
+                    </li>
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link text-light" [routerLink]="['/labs']">Labs</a>
+                    </li>
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link pull-right text-light" (click)="moveToContactPage()">
+              Contact Us
+            </a>
+                    </li>
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link btn btn-outline-secondary btn-sm text-light" data-toggle="pill" href="#">LOG IN</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+            <div class="overlay-content">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 list-container" *ngFor="let location of locations">
+                        <h3 class="text-danger text-center">
+                            <b>{{location.country}}</b>
+                        </h3>
+                        <ul class="list-group">
+                            <li class="list-group-item text-center" *ngFor="let office of location.offices" (click)="openSelectedLocation(location,office)">
+                                <i class="fa fa-location-arrow" aria-hidden="true"></i>&nbsp;{{office.workplace}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header> -->
+<div class="row">
+    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12"></div>
+    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12"></div>
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+      <a href="#" class="text-primary pull-right top-right-close label-header" [routerLink]="['/home']">Close
+        <i class="fa fa-chevron-circle-up icon-size" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+<!-- Page Content -->
+<section class="py-5">
+    <div class="container-fluid">
+        <br>
+        <h1>{{currentPageContent.plansPricing.plansPricingLabel}}</h1>
+        <br>
+        <h2>{{currentPageContent.membershipOptions.membershipOptionsLabel}}</h2>
+        <p>{{currentPageContent.membershipOptions.membershipOptionsDescription}}</p>
+        <br>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" *ngFor="let plan of currentPageContent.membershipOptions.membershipOptionsplansAndPricing">
+                <div class="card" style="width: 100%;">
+                    <img class="card-img-top img-responsive imb-thumbnail" src={{plan.image}} alt="Card image cap">
+                    <div class="card">
+                        <div class="card-header" style="background-color:white;">
+                            <h5 class=" card-title ">{{plan.name}}</h5>
+                            <p class="card-text ">
+                                <b>{{plan.pricing}}</b>
+                            </p>
+                            <p>{{plan.description}}</p>
+                        </div>
+                        <div class="card-body" style="background-color:#F8F9F9;font-size: 14px;">
+                            <h6>Best for : </h6>
+                            <div *ngFor="let item of plan.bestFor">
+                                <p>. {{item}}</p>
+                            </div>
+                        </div>
+                        <div class="card-footer text-muted ">
+                            <a href="# " class="btn btn-block btn-primary ">{{plan.buttonLabel}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+        <br>
+        <br>
+        <br>
+        <h2>{{currentPageContent.includedAmenities.includedAmenitiesLabel}}</h2>
+        <p>{{currentPageContent.includedAmenities.includedAmenitiesDescription}}</p>
+        <br>
+        <div class="row" style="background-color:#FBFCFC;margin-left: 10px;margin-top: 15px;margin-right: 10px;padding: 10px;">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 text-center" *ngFor="let content of currentPageContent.includedAmenities.includedAmenitiesAmenities">
+                <span class="icons">
+          <i class="fa-2x {{content.icon}}" aria-hidden="true" style="padding:22px;"></i>
+        </span>
+                <p class="text-center">{{content.name}}</p>
+            </div>
+        </div>
+
+        <div class="row" style="background-color:#F8F9F9;margin-left: 10px;margin-right: 10px;">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
+                <br>
+                <h5>{{currentPageContent.inItTogether.inItTogetherLabel}}</h5>
+                <p>{{currentPageContent.inItTogether.inItTogetherDescription}}</p>
+                <br>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
+                <br>
+                <h5>{{currentPageContent.benefitsForAll.benefitsForAllLabel}}</h5>
+                <p>{{currentPageContent.benefitsForAll.benefitsForAllDescription}}</p>
+                <br>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <div class="row" style="margin-left: 5px;margin-right: 5px;">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
+                <div style="width: 33%;display:inline-block;float: left;">
+                    <br>
+                    <img src={{currentPageContent.onDemand.onDemandImageUrl}} style="width:95%;height: 100%;" class="card">
+                </div>
+                <div style="width: 66%;display:inline-block;padding: 4px;">
+                    <h4>{{currentPageContent.onDemand.onDemandLabel}}</h4>
+                    <h6>{{currentPageContent.onDemand.onDemandHeading1}}</h6>
+                    <p>
+                        <span class="text-secondary">{{currentPageContent.onDemand.onDemandHeading2}}</span>
+                        <br> {{currentPageContent.onDemand.onDemandDescription}}
+                        <br>
+                        <a href="# " class="btn btn-primary" style="margin-top: 10px;">{{currentPageContent.onDemand.onDemandButtonLabel}}</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
+                <div style="width: 33%;display:inline-block;float: left;">
+                    <br>
+                    <img src={{currentPageContent.theURSApp.theURSAppImageUrl}} style="width:95%;height: 100%;" class="card">
+                </div>
+                <div style="width: 66%;display:inline-block;padding: 4px;">
+                    <h4>{{currentPageContent.theURSApp.theURSAppLabel}}</h4>
+                    <h6>{{currentPageContent.theURSApp.theURSAppHeading}}</h6>
+                    <p><br>{{currentPageContent.theURSApp.theURSAppDescription}}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <div class="row" style="margin-left: 15px;margin-right: 15px;">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" style="background-image: url('assets/images/image11.jpg')">
+                <br>
+                <br>
+                <h2 class="text-light">{{currentPageContent.ursSystemsEnterprise.ursSystemsEnterpriseLabel}}</h2>
+                <h6 class="text-light">{{currentPageContent.ursSystemsEnterprise.ursSystemsEnterpriseHeading}}</h6>
+                <br>
+                <br>
+                <p class="text-light">
+                    {{currentPageContent.ursSystemsEnterprise.ursSystemsEnterpriseDescription}} </p>
+                <br>
+                <a href="# " class="btn btn-light" style="margin: 10px;">{{currentPageContent.ursSystemsEnterprise.ursSystemsEnterpriseButtonLabel}}</a>
+                <br>
+                <br>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <h4>{{currentPageContent.ourClientsTell.ourClientsTellLabel}}</h4>
+        <div class="row ">
+            <div class="col-sm-3" *ngFor="let client of currentPageContent.ourClientsTell.clients">
+                <div class="card text-center " style="width:100% ">
+                    <br>
+                    <img class="card-img-top rounded-circle " src={{client.image}} alt="Card image " style="width:60%;margin-left: auto;margin-right: auto; ">
+                    <div class="card-body ">
+                        <div class="card-title ">
+                            <h5>{{client.name}}</h5>
+                            <h6>{{client.profession}}</h6>
+                            <p>-</p>
+                        </div>
+                        <p class="card-text ">
+                            <i>{{client.comments}}</i>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <h2>{{currentPageContent.faq.faqLabel}}</h2>
+        <p>{{currentPageContent.faq.faqHeading}}</p>
+        <div class="row" style="margin-left: 5px;margin-right: 5px;">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 card" *ngFor="let question of currentPageContent.faq.faqQuestions">
+                <br>
+                <h6>{{question.question}}</h6>
+                <p>{{question.answer}}</p>
+            </div>
+        </div>
+        <div class="row" style="margin-left: 5px;margin-right: 5px;">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 card" *ngFor="let question of questions">
+                <br>
+                <h6>{{question.question}}</h6>
+                <p>{{question.answer}}</p>
+            </div>
+        </div>
+        <div class="row" style="margin-left: 5px;margin-right: 5px;">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 card" *ngFor="let question of questions">
+                <br>
+                <h6>{{question.question}}</h6>
+                <p>{{question.answer}}</p>
+            </div>
+        </div>
+        <br>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-5 bg-dark ">
+    <h4 style="color: ivory ">&nbsp;&nbsp; {{currentPageContent.ourServices.ourServicesLabel}}</h4>
+    <div class="container " style="color: ivory ">
+        <div class="row text-center ">
+            <div class="col-sm-4 ">
+                <div class="list-group ">
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.location1Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.location2Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.location3Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.location4Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.location5Label}}</a>
+                </div>
+            </div>
+            <div class="col-sm-4 ">
+                <div class="list-group ">
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.service1Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.service2Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.service3Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.service4Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.service5Label}}</a>
+                </div>
+            </div>
+            <div class="col-sm-4 ">
+                <div class="list-group ">
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.work1Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.work2Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.work3Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.work4Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.work5Label}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <p class="m-0 text-center text-white ">Copyright &copy; {{currentPageContent.yourSite.yourSiteLabel}}</p>
+    <!-- /.container -->
+</footer>

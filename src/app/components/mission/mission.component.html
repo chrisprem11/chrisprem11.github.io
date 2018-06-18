@@ -1,0 +1,211 @@
+<!-- <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="navbar">
+        <div class="container">
+            <a class="navbar-brand text-primary" href="#">URS Systems</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item customNavItem active">
+                        <a class="nav-link  text-light" (click)="openNav()">
+              Locations
+            </a>
+                    </li>
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link text-light" [routerLink]="['/plans']">Plans</a>
+                    </li>
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link text-light" [routerLink]="['/mission']">Mission</a>
+                    </li>
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link text-light" [routerLink]="['/enterprise']">Enterprise</a>
+                    </li>
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link text-light" [routerLink]="['/labs']">Labs</a>
+                    </li>
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link pull-right text-light" (click)="moveToContactPage()">
+              Contact Us
+            </a>
+                    </li>
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link btn btn-outline-secondary btn-sm text-light" data-toggle="pill" href="#">LOG IN</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+            <div class="overlay-content">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 list-container" *ngFor="let location of locations">
+                        <h3 class="text-danger text-center">
+                            <b>{{location.country}}</b>
+                        </h3>
+                        <ul class="list-group">
+                            <li class="list-group-item text-center" *ngFor="let office of location.offices" (click)="openSelectedLocation(location,office)">
+                                <i class="fa fa-location-arrow" aria-hidden="true"></i>&nbsp;{{office.workplace}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header> -->
+<div class="row">
+    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12"></div>
+    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12"></div>
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+      <a href="#" class="text-primary pull-right top-right-close label-header" [routerLink]="['/home']">Close
+        <i class="fa fa-chevron-circle-up icon-size" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+<!-- Page Content -->
+<section class="py-5">
+    <div style="margin-top:-15px;background-image: url('assets/images/image1.jpg')">
+        <br>
+        <br>
+        <br>
+        <br>
+        <div style="padding:10px;width:66%;margin-left: auto;margin-right: auto;border:10px solid white;" class="text-center">
+            <br>
+            <br>
+            <h1 class="display-3 text-light" style="font-weight: 600;">{{currentPageContent.ourMission.ourMissionLabel}}</h1>
+            <br>
+            <h3 class="display-5 text-light" style="font-weight: 600;">{{currentPageContent.ourMission.ourMissionDescription}}</h3>
+            <br>
+            <br>
+            <br>
+        </div>
+        <br>
+        <br>
+        <br>
+    </div>
+    <br>
+    <br>
+    <h1 style="margin-left: 15px;">{{currentPageContent.ourStory.ourStoryLabel}}</h1>
+    <div style="margin-left: 15px; width: 50%"> {{currentPageContent.ourStory.ourStoryDescription}}
+    </div>
+    <br>
+    <br>
+    <br>
+    <div style="margin-top:-15px;background-image: url('assets/images/image5.jpg')">
+        <br>
+        <br>
+        <div style="padding:50px;width:25%;margin-left: 55%;margin-right: auto;border:10px solid white;" class="text-center">
+            <br>
+            <br>
+            <h1 class="display-4 text-light" style="font-weight: 500;">{{currentPageContent.createYourLife.createYourLabel}}</h1>
+            <br>
+            <br>
+            <br>
+        </div>
+        <br>
+        <br>
+        <br>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="container-fluid">
+        <h1>{{currentPageContent.ourValues.ourValuesLabel}}</h1>
+        <br>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" *ngFor="let ourValue of currentPageContent.ourValues.values">
+                <div style="padding: 5px;">
+                    <h5>{{ourValue.name}}</h5>
+                    <p>{{ourValue.description}}</p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+
+        <div class="row bg-light" style="padding: 15px; ">
+            <div class="col-sm-6">
+                <br>
+                <h2>{{currentPageContent.ourTeam.ourteamLabel}}</h2>
+                <br>
+                <P>{{currentPageContent.ourTeam.ourTeamDescription}}
+                </P>
+                <button class="btn btn-primary">{{currentPageContent.ourTeam.ourTeamJoinTheTeamButtonLabel}}</button>
+                <br>
+            </div>
+            <div class="col-sm-6 text-center">
+                <img src={{currentPageContent.ourTeam.ourTeamImageUrl}} style="width: 90%;height: 100%;" class="rounded">
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <div style="margin-top:-15px;background-image: url('assets/images/image1.jpg')">
+        <br>
+        <br>
+        <br>
+        <br>
+        <div style="padding:15px;width:66%;margin-left: auto;margin-right: auto;border:8px solid white;" class="text-center">
+            <br>
+            <br>
+            <br>
+            <a href="#left" style="float: left;">
+                <i class="fa fa-arrow-left fa-lg text-light" aria-hidden="true"> &nbsp;&nbsp;&nbsp; {{currentPageContent.whyURSSystems.whyURSSystemsLabel}}</i>
+            </a>
+            <i class="fa fa-arrow-right fa-lg text-light" aria-hidden="true"></i>
+            <a href="#right" style="float: right;" class="text-light">{{currentPageContent.whyURSSystems.whyURSSystemsOurBlogLabel}} &nbsp;&nbsp;&nbsp;
+          <i class="fa fa-arrow-right fa-lg text-light" aria-hidden="true"></i> </a>
+            <br>
+            <br>
+            <br>
+        </div>
+        <br>
+        <br>
+        <br>
+    </div>
+
+
+</section>
+
+<!-- Footer -->
+<footer class="py-5 bg-dark ">
+    <h4 style="color: ivory ">&nbsp;&nbsp; {{currentPageContent.ourServices.ourServicesLabel}}</h4>
+    <div class="container " style="color: ivory ">
+        <div class="row text-center ">
+            <div class="col-sm-4 ">
+                <div class="list-group ">
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.location1Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.location2Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.location3Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.location4Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.location5Label}}</a>
+                </div>
+            </div>
+            <div class="col-sm-4 ">
+                <div class="list-group ">
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.service1Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.service2Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.service3Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.service4Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.service5Label}}</a>
+                </div>
+            </div>
+            <div class="col-sm-4 ">
+                <div class="list-group ">
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.work1Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.work2Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.work3Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.work4Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.work5Label}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <p class="m-0 text-center text-white ">Copyright &copy; {{currentPageContent.yourSite.yourSiteLabel}}</p>
+    <!-- /.container -->
+</footer>

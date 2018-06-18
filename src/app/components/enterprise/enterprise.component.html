@@ -1,0 +1,232 @@
+<div *ngIf="currentPageContent" class="pageContent">
+  <div class="row">
+    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12"></div>
+    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12"></div>
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+      <a href="#" class="text-primary pull-right top-right-close label-header" [routerLink]="['/home']">Close
+        <i class="fa fa-chevron-circle-up icon-size" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+  <div class="container">
+    <h1 class="heading">{{currentPageContent.enterpriseLabel}}</h1>
+    <br>
+    <p class="heading" style="word-wrap: break;text-justify: center;">{{currentPageContent.enterpriseContent}}</p>
+  </div>
+  <br>
+  <hr>
+  <div class="container-fluid row">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" *ngFor="let workspace of currentPageContent.workSpaceContent">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top img-responsive imb-thumbnail" src={{workspace.image}} alt="Card image cap">
+        <div class="card text-center">
+          <div class="card-header">
+            <h5 class="card-title">{{workspace.title}}</h5>
+          </div>
+          <div class="card-body location-detail">
+            <p class="heading" style="word-wrap: break;text-justify: center;">
+              {{workspace.description}}
+            </p>
+          </div>
+          <div class="card-footer text-muted">
+            <a href="#" class="btn btn-block btn-primary">{{workspace.button}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
+  <br>
+  <div class="container">
+    <h1 class="heading">{{currentPageContent.spaceAsaServiceLabel}}</h1>
+    <br>
+    <p class="heading" style="word-wrap: break;text-justify: center;">{{currentPageContent.spaceAsaServiceContent}}</p>
+  </div>
+  <br>
+  <hr>
+  <div class="container-fluid row">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" *ngFor="let workspace of currentPageContent.services">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top img-responsive imb-thumbnail" src={{workspace.image}} alt="Card image cap">
+        <div class="card text-center">
+          <div class="card-header">
+            <h5 class="card-title">{{workspace.title}}</h5>
+          </div>
+          <div class="card-body location-detail">
+            <p class="heading" style="word-wrap: break;text-justify: center;">
+              {{workspace.description}}
+            </p>
+          </div>
+          <!-- <div class="card-footer text-muted">
+                <a href="#" class="btn btn-block btn-primary">{{workspace.button}}</a>
+              </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <hr>
+  <div class="container">
+    <h1 class="heading">{{currentPageContent.customAndStandardLabel}}</h1>
+    <br>
+    <p class="heading" style="word-wrap: break;text-justify: center;">{{currentPageContent.customAndStandardContent}}</p>
+    <br>
+    <p class="heading">
+      <b>{{currentPageContent.standardLabel}}</b>&nbsp;{{currentPageContent.standardContent}}</p>
+    <p class="heading">
+      <b>{{currentPageContent.customLabel}}</b>&nbsp;{{currentPageContent.customContent}}</p>
+  </div>
+  <br>
+  <hr>
+  <div class="container-fluid">
+    <div class="text-center">
+      <figure class="figure">
+        <img src={{currentPageContent.officeArtImage}} class="figure-img img-fluid img-responsive" alt="A generic square placeholder image with rounded corners in a figure.">
+        <figcaption class="figure-caption text-light text-center bg-dark text">{{currentPageContent.officeArtLabel}}</figcaption>
+      </figure>
+    </div>
+  </div>
+  <br>
+  <hr>
+  <div class="container-fluid">
+    <h3 class="heading">{{currentPageContent.enterprisePartnerLabel}}</h3>
+    <br>
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" *ngFor="let content of currentPageContent.enterpriseLogos">
+        <div class="text-center">
+          <img src={{content.icon}} class="img img-responsive img-thumbnail icons" alt="logo">
+        </div>
+        <br>
+      </div>
+      <br>
+    </div>
+  </div>
+  <br>
+  <hr>
+  <div class="container-fluid">
+    <div class="enterprise-form">
+      <br>
+      <div class="row ">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12"></div>
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 text-light"><br>
+          <h2 class="heading text-danger">{{currentPageContent.enterpriseFormContent.formHeadingLabel}}</h2>
+          <p class="heading text-light">{{currentPageContent.enterpriseFormContent.formHeadingContent}}</p>
+          <form (ngSubmit)="onSubmit()">
+            <div class="form-row">
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                  <label for="">{{currentPageContent.enterpriseFormContent.formNameLabel}}</label>
+                  <input type="text" maxlength="30" class="form-control" name="name" id="" placeholder="Your Full Name">
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                  <label for="">{{currentPageContent.enterpriseFormContent.formCompanyNameLabel}}</label>
+                  <input type="text" maxlength="30" class="form-control" name="companyName" id="" placeholder="Business name">
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="form-row">
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                  <label for="">{{currentPageContent.enterpriseFormContent.formEmailLabel}}</label>
+                  <input type="text" maxlength="30" class="form-control" name="name" id="" placeholder="Your Email address">
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                  <label for="">{{currentPageContent.enterpriseFormContent.formCompanyLocationLabel}}</label>
+                  <input type="text" maxlength="30" class="form-control" name="companyName" id="" placeholder="Where you'd like workspace?">
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="form-row">
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                  <label for="">{{currentPageContent.enterpriseFormContent.formPhoneLabel}}</label>
+                  <div class="input-group">
+                    <div class="input-group-append">
+                      <button class="input-group-text btn-outline">
+                        <a href="#">
+                          <i class="fa fa-caret-down" aria-hidden="true"></i>
+                        </a>
+                      </button>
+                    </div>
+                    <input type="text" maxlength="10" class="form-control" name="name" id="" placeholder="Your Phone number">
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                  <label for="">{{currentPageContent.enterpriseFormContent.formMoveInDateLabel}}</label>
+                  <select class="form-control" id="exampleFormControlSelect1">
+                    <option *ngFor="let data of currentPageContent.enterpriseFormContent.formMoveInDateContent">{{data.date}}</option>
+                    <!-- <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option> -->
+                  </select>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="form-row">
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                  <label for="">{{currentPageContent.enterpriseFormContent.jobTitleLabel}}</label>
+                  <input type="text" maxlength="30" class="form-control" name="name" id="" placeholder="Your role at company">
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                  <label for="">{{currentPageContent.enterpriseFormContent.numberOfPeopleLabel}}</label>
+                  <select class="form-control" id="exampleFormControlSelect1">
+                    <option *ngFor="let data of currentPageContent.enterpriseFormContent.numberOfPeopleContent">{{data.people}}</option>
+                    <!-- <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option> -->
+                  </select>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="form-row">
+              <label for="">{{currentPageContent.enterpriseFormContent.addtionalNoteLabel}}</label>
+              <textarea maxlength="300" class="form-control" rows="3" name="additionalNotes" placeholder="Any additional comments ?"></textarea>
+            </div>
+            <br>
+            <div class="form-row">
+              <p class="text">{{currentPageContent.policyAgreementlabel_1}}
+                <a href={{currentPageContent.termsAndServiceLink}} class="text-primary">{{currentPageContent.termsAndServiceLabel}}</a> {{currentPageContent.policyAgreementlabel_2}}
+                <a href={{currentPageContent.privacyPolicyLink}} class="text-primary">{{currentPageContent.privacyPolicyLabel}}</a>
+              </p>
+            </div>
+            <br>
+            <div class="form-row">
+              <input type="submit" value="Submit request" class="btn btn-md btn-warning pull-left">
+            </div>
+            <br>
+          </form>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12"></div>
+      </div>
+      <br>
+    </div>
+  </div>
+  <br>
+  <footer>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="collapse navbar-collapse pull-left" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto">
+          <p>{{currentPageContent.copyrightLabel}}</p>
+        </div>
+        <div class="pull-right" *ngFor="let footerIcon of currentPageContent.footerIcons">
+          <i class="{{footerIcon.icon}} footer-icon" aria-hidden="true"></i>
+        </div>
+      </div>
+    </nav>
+  </footer>
+</div>

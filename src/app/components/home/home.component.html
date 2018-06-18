@@ -1,0 +1,328 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbar">
+    <div class="container">
+        <a class="navbar-brand text-primary" href="#">{{ currentPageContent.navBar.navBarLogoName}}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item customNavItem active">
+                    <a class="nav-link  text-light" (click)="openNav()">
+             {{ currentPageContent.navBar.navBarLocationLabel}}
+            <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
+          </a>
+                </li>
+                <li class="nav-item customNavItem">
+                    <a class="nav-link text-light" [routerLink]="['/plans']">{{ currentPageContent.navBar.navBarPlansLabel}}</a>
+                </li>
+                <li class="nav-item customNavItem">
+                    <a class="nav-link text-light" [routerLink]="['/mission']">{{ currentPageContent.navBar.navBarMissionLabel}}</a>
+                </li>
+                <li class="nav-item customNavItem">
+                    <a class="nav-link text-light" [routerLink]="['/enterprise']">{{ currentPageContent.navBar.navBarEnterpriseLabel}}</a>
+                </li>
+                <li class="nav-item customNavItem">
+                    <a class="nav-link text-light" [routerLink]="['/labs']">{{ currentPageContent.navBar.navBarLabsLabel}}</a>
+                </li>
+                <li class="nav-item customNavItem">
+                    <a class="nav-link pull-right text-light" [routerLink]="['/contact']">
+             {{ currentPageContent.navBar.navBarContactUsLabel}}
+            <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
+          </a>
+                </li>
+                <!-- <li class="nav-item customNavItem">
+                    <a class="nav-link btn btn-outline-secondary btn-sm text-light" data-toggle="pill" href="#">LOG IN</a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Overlay location content -->
+<div class="container-fluid">
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+        <div class="overlay-content">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 list-container" *ngFor="let location of locations">
+                    <h3 class="text-danger text-center">
+                        <b>{{location.country}}</b>
+                    </h3>
+                    <ul class="list-group">
+                        <li class="list-group-item text-center" *ngFor="let office of location.offices" (click)="openSelectedLocation(location,office)">
+                            <i class="fa fa-location-arrow" aria-hidden="true"></i>&nbsp;{{office.workplace}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<header>
+    <div id="container">
+        <div ng2-carouselamos class="slides-wrapper" [items]="currentPageContent.carouselImages" [width]=[width] [$prev]="prev" [$next]="next" [$item]="item">
+        </div>
+
+        <ng-template #prev>
+            <button class='left btn btn-outline-primary btn-lg badge-pill' id='left'>&lt;</button>
+        </ng-template>
+        <ng-template #next>
+            <button class='right btn btn-outline-primary btn-lg badge-pill' id='right'>&gt;</button>
+        </ng-template>
+        <ng-template #item let-item let-i="index">
+
+            <div class="items">
+                <img src="{{ item.url }}" width={{width}}>
+            </div>
+
+        </ng-template>
+    </div>
+</header>
+
+<!-- Page Content -->
+<section class="py-5">
+    <br>
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1 style="font-size: 64px">{{currentPageContent.whereBusinessesThrive.whereBusinessesThriveLabel}}</h1>
+                <p>{{currentPageContent.whereBusinessesThrive.whereBusinessesThriveDescription}}</p>
+                <br>
+                <div class="form-group">
+                    <label for="sel1">
+            <b>{{currentPageContent.whereBusinessesThrive.whereBusinessesThriveHeading1}}</b>
+          </label>
+                    <select class="form-control" id="sel1">
+            <option *ngFor="let location of currentPageContent.whereBusinessesThrive.whereBusinessesThriveOptions">{{location}}</option>
+          </select>
+                    <br>
+                    <label for="list1">
+            <b>{{currentPageContent.whereBusinessesThrive.whereBusinessesThriveHeading2}}</b>
+          </label>
+                    <table class="table table-bordered">
+                        <tbody class="text-center">
+                            <tr>
+                                <td *ngFor="let range of currentPageContent.whereBusinessesThrive.whereBusinessesThriveHeadingEmployeesRange">{{range}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <button type="button" class="btn btn-warning">{{currentPageContent.whereBusinessesThrive.whereBusinessesThriveButtonLabel}}</button>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <img src={{currentPageContent.whereBusinessesThrive.whereBusinessesThriveImageUrl}} style="width: 100%;height: 100%;">
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+
+        <div class="row">
+            <div class="col-sm-6 text-center">
+                <img src={{currentPageContent.welcomeUrsSystem.welcomeUrsSystemImageUrl}} style="width: 70%;height: 100%;" class="rounded-circle">
+            </div>
+            <div class="col-sm-6">
+                <br>
+                <br>
+                <br>
+                <p>{{currentPageContent.welcomeUrsSystem.welcomeUrsSystemNote}}</p>
+                <h1>{{currentPageContent.welcomeUrsSystem.welcomeUrsSystemLabel}}</h1>
+                <p style="font-weight:700">{{currentPageContent.welcomeUrsSystem.welcomeUrsSystemHeading}}</p>
+                <p>{{currentPageContent.welcomeUrsSystem.welcomeUrsSystemDescription}}</p>
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+
+        <div class="row">
+            <div class="col-sm-6 text-center">
+                <img src={{currentPageContent.spaceAsAnExperience.spaceAsAnExperienceImageUrl}} style="width: 70%;height: 100%;" class="rounded">
+            </div>
+            <div class="col-sm-6">
+                <br>
+                <br>
+                <br>
+                <h2>{{currentPageContent.spaceAsAnExperience.spaceAsAnExperienceLabel}}</h2>
+                <p style="font-weight:700">{{currentPageContent.spaceAsAnExperience.spaceAsAnExperienceHeading}}</p>
+                <p>{{currentPageContent.spaceAsAnExperience.spaceAsAnExperienceDescription}}</p>
+                <br>
+                <p style="font-weight:700">
+                    <u>{{currentPageContent.spaceAsAnExperience.spaceAsAnExperienceWhyURSSystem}}</u>
+                </p>
+                <br>
+                <br>
+            </div>
+        </div>
+        <br>
+        <br>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h3>{{currentPageContent.workspaceIsOurCraft.workspaceIsOurCraftLabel}}</h3>
+                            <P>{{currentPageContent.workspaceIsOurCraft.workspaceIsOurCraftDescription}}</P>
+                        </div>
+                        <div class="col-sm-6">
+                            <h3>{{currentPageContent.practiceMakesPerfect.practiceMakesPerfectLabel}}</h3>
+                            <P>{{currentPageContent.practiceMakesPerfect.practiceMakesPerfectDescription}}</P>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 text-center">
+                <img src={{currentPageContent.workspaceIsOurCraft.workspaceIsOurCraftImageUrl}} style="width: 70%;height: 100%;" class="rounded">
+            </div>
+        </div>
+        <br>
+        <br>
+
+        <div class="row">
+            <div class="col-sm-6 text-center">
+                <img src={{currentPageContent.letUsHandleThat.letUsHandleThatImageUrl}} style="width: 70%;height: 100%;" class="rounded">
+            </div>
+            <div class="col-sm-6">
+                <br>
+                <br>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h3>{{currentPageContent.letUsHandleThat.letUsHandleThatLabel}}</h3>
+                            <P>{{currentPageContent.letUsHandleThat.letUsHandleThatDescription}}</P>
+                        </div>
+                        <div class="col-sm-6">
+                            <h3>{{currentPageContent.theGlobalNetwork.theGlobalNetworkLabel}}</h3>
+                            <P>{{currentPageContent.theGlobalNetwork.theGlobalNetworkDescription}}</P>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <br>
+                <br>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h3>{{currentPageContent.weeklyEvents.weeklyEventsLabel}}</h3>
+                            <P>{{currentPageContent.weeklyEvents.weeklyEventsDescription}}</P>
+                        </div>
+                        <div class="col-sm-6">
+                            <h3>{{currentPageContent.conferenceRooms.conferenceRoomsLabel}}</h3>
+                            <P>{{currentPageContent.conferenceRooms.conferenceRoomsDescription}}</P>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 text-center">
+                <img src={{currentPageContent.weeklyEvents.weeklyEventsImageUrl}} style="width: 70%;height: 100%;" class="rounded">
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+
+        <h3>{{currentPageContent.spaceThatWorksforYou.spaceThatWorksforYouLabel}}</h3>
+        <br>
+        <div class="row">
+
+            <div class="col-sm-4" *ngFor="let space of currentPageContent.spaceThatWorksforYou.spaces">
+                <div class="card" style="width:100%;height:100%;">
+                    <img class="card-img-top" src={{space.imageUrl}} alt="Card image" style="width:100%">
+                    <div class="card-body">
+                        <h4 class="card-title">{{space.heading}}</h4>
+                        <p class="card-text">{{space.description}}</p>
+                        <a href="#" class="text-primary">{{space.buttonLabel}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+        <h3>Our clients Tell It Like It Is</h3>
+        <div class="row ">
+            <div class="col-sm-3" *ngFor="let client of currentPageContent.ourClientsTell.clients">
+                <div class="card text-center " style="width:100% ">
+                    <br>
+                    <img class="card-img-top rounded-circle " src={{client.image}} alt="Card image " style="width:60%;margin-left: auto;margin-right: auto; ">
+                    <div class="card-body ">
+                        <div class="card-title ">
+                            <h5>{{client.name}}</h5>
+                            <h6>{{client.profession}}</h6>
+                            <p>-</p>
+                        </div>
+                        <p class="card-text ">
+                            <i>{{client.comments}}</i>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+
+        <h3>{{currentPageContent.enterpriseMembers.currentPageContentLabel}}</h3>
+        <br>
+        <div class="row text-center bg-light" style="margin:20px;">
+            <div class="col-sm-3" *ngFor="let member of currentPageContent.enterpriseMembers.members">
+                <br>
+                <img class="rounded-circle" src={{member.imageUrl}} alt="Card image" style="width:40%;height:100px;margin-left: auto;margin-right: auto; margin-bottom:15px;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-5 bg-dark ">
+    <h4 style="color: ivory ">&nbsp;&nbsp; {{currentPageContent.ourServices.ourServicesLabel}}</h4>
+    <div class="container " style="color: ivory ">
+        <div class="row text-center ">
+            <div class="col-sm-4 ">
+                <div class="list-group ">
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.location1Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.location2Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.location3Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.location4Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.location5Label}}</a>
+                </div>
+            </div>
+            <div class="col-sm-4 ">
+                <div class="list-group ">
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.service1Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.service2Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.service3Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.service4Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.service5Label}}</a>
+                </div>
+            </div>
+            <div class="col-sm-4 ">
+                <div class="list-group ">
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.work1Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.work2Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.work3Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.work4Label}}</a>
+                    <a href="# " style="color: ivory ">{{currentPageContent.ourServices.work5Label}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <p class="m-0 text-center text-white ">Copyright &copy; {{currentPageContent.yourSite.yourSiteLabel}}</p>
+    <!-- /.container -->
+</footer>

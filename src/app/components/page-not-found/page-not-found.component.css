@@ -1,0 +1,11 @@
+.text {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-style: italic;
+  font-size: 1.1em;
+}
+
+.jumbo-image {
+  background-image: url('/assets/images/jumbo-image.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
